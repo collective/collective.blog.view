@@ -15,8 +15,9 @@ class FolderEntryGetter:
         
     def get_entries(self):
         catalog = getToolByName(self.context, 'portal_catalog')
-        path = self.context.getPhysicalPath()
-        return catalog.searchResults(path = path, sort_on='effective')
+        path = '/'.join(self.context.getPhysicalPath())
+        return catalog.searchResults(path={'query': path, 'depth':1},
+                                     sort_on='effective')
 
     
 class TopicEntryGetter:

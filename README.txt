@@ -25,9 +25,18 @@ a Blog with a simple click of the button. It will also create the
 
 Settings
 --------
+
 collective.blog.view has only one setting. In portal_properties.site_properties
 you can add an integer property called "blog_view_items". This property will
 be used as the number of items to show per page in the blog view. If it does
 not exist, it will default to ten items.
 
 
+What this product do not have
+-----------------------------
+
+There is no Plone control panel in this product, nor will there ever be one,
+so you need to change the settings through the ZMI. There will also never be
+any per-folder settings, as that would require extending the schema for 
+folders or have a dedicated blog type, both which will defeat the main goal
+of this product: simplicity and flexibility.

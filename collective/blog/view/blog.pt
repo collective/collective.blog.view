@@ -32,10 +32,18 @@
       
       <span class="visualClear"><!-- --></span>         
       
-      <div id="blog-listing">            
-        <tal:contentitem repeat="item view/blogitems">
-          <div class="blog-item" tal:content="structure item/blog_item_view" />
+      <div id="blog-listing"
+           tal:define="batch view/batch">
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+      
+        <tal:contentitem repeat="item batch">
+          <div class="blog-item"
+               tal:define="ob item/getObject"
+               tal:content="structure ob/blog_item_view" />
         </tal:contentitem>
+        
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+        
         <span class="visualClear"><!-- --></span>         
       </div>
      
