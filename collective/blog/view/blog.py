@@ -1,4 +1,5 @@
 from Products.Five import BrowserView
+from Products.CMFCore.utils import getToolByName
 from collective.blog.view.interfaces import IBlogEntryRetriever
 
 class BlogView(BrowserView):
@@ -18,6 +19,7 @@ class BlogView(BrowserView):
     def blogitems(self):
         """List blog items"""
         # XXX batching
-        return [x.getObject() for x in self._get_brains()[:5]]
-
-
+        portal_properties = getToolByName(self.context, 'portal_properties', None)
+        site_properties = getattr(portal_properties, 'site_properties', None)
+        blog_view_items = site_properties.getProperty('blog_view_items', 10)
+        return [x.getObject() for x in self._get_brains()[:blog_view_items]]

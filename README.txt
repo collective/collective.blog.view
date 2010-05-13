@@ -19,5 +19,15 @@ of a folder or collection.
 Although collective.blog.view doesn't need any installation, there is a
 profile included. If you install this view you get "Blog View" as a
 view option for all folders anc collections, easily turning any folder into
-a Blog with a simple click of the button.
+a Blog with a simple click of the button. It will also create the 
+"blog_view_items" property, see below.
+
+
+Settings
+--------
+collective.blog.view has only one setting. In portal_properties.site_properties
+you can add an integer property called "blog_view_items". This property will
+be used as the number of items to show per page in the blog view. If it does
+not exist, it will default to ten items.
+
 
