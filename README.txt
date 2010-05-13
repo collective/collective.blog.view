@@ -22,6 +22,11 @@ view option for all folders anc collections, easily turning any folder into
 a Blog with a simple click of the button. It will also create the 
 "blog_view_items" property, see below.
 
+Installing this profile will override any changes you have done to the
+view methods of Folder, Large Plone Folder and Collections. It's generally
+not recommended to install the profile on a heavily customized site, it's
+better to make the changes manually, they are few and simple.
+
 
 Settings
 --------

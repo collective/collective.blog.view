@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="Large Plone Folder">
+ <property name="view_methods">
+  <element value="folder_summary_view"/>
+  <element value="folder_tabular_view"/>
+  <element value="atct_album_view"/>
+  <element value="folder_listing"/>
+  <element value="blog_view"/>
+ </property>
+</object>

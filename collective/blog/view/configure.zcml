@@ -1,8 +1,19 @@
 <configure
   xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
   i18n_domain="collective.blog.view">
 
+  <!-- Register the installation GenericSetup extension profile -->
+  <genericsetup:registerProfile
+    name="default"
+    title="Collective Blog View"
+    description="Blog view for Plone"
+    directory="profiles/default"
+    provides="Products.GenericSetup.interfaces.EXTENSION"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    />
+  
   <browser:page
     for="*"
     name="blog_view"
