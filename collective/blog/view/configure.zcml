@@ -19,8 +19,11 @@
     />
       
   <adapter
-    factory=".adapters.FolderItemGetter"
-    for="*"
+    factory=".adapters.FolderEntryGetter"
+    />
+    
+  <adapter
+    factory=".adapters.TopicEntryGetter"
     />
 
 </configure>

@@ -1,5 +1,9 @@
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+import re
+
+START_RE = re.compile('<h1[^<>]+documentFirstHeading[^<>]+>') # Standard plone header
+END_RE = re.compile('</h1>')
 
 class DefaultItemView(BrowserView):
     """
@@ -7,8 +11,6 @@ class DefaultItemView(BrowserView):
     """
     
     template = ViewPageTemplateFile("default_item.pt")
-    headerstart = '<h1 class="documentFirstHeading">' # Standard plone header
-    headerend = '</h1>'
     
     def __init__(self, context, request):
         self.context = context
@@ -16,15 +18,18 @@ class DefaultItemView(BrowserView):
     
     def __call__(self):
         html = self.template()
-        startpos = html.find(self.headerstart) + len(self.headerstart)
-        endpos = html.find(self.headerend, startpos)
+        tag = START_RE.search(html)
+        if not tag:
+            return html
+        startpos = tag.end()
+        endpos = END_RE.search(html, startpos).start()
+        
         result = (html[:startpos],
                   '<a href="',
                   self.context.absolute_url(),
                   '">',
                   html[startpos:endpos],
                   '</a>',
-                  html[endpos:])
-        
+                  html[endpos:])        
         return ''.join(result)
     
