@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.blog.view">
+  <body>
+    <metal:main fill-slot="main">
+      <tal:main-macro metal:define-macro="main">
+        
+      <div tal:replace="structure provider:plone.abovecontenttitle" />      
+      
+      <p class="documentDescription">
+        <metal:field use-macro="python:here.widget('description', mode='view')">
+          Description
+        </metal:field>
+        <span class="visualClear"><!-- --></span>
+      </p>
+      
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+      
+      <div class="sectionImageContainer" tal:condition="here/image_mini|nothing">
+        <a href="#"
+          tal:attributes="href string:$here_url/image/image_view_fullscreen"
+          id="parent-fieldname-image">
+          <img tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt="" />
+        </a>
+        <p class="discreet">
+          <metal:field use-macro="python:here.widget('imageCaption', mode='view')">
+            Image Caption
+          </metal:field>
+        </p>
+      </div>
+      
+      <span class="visualClear"><!-- --></span>         
+      
+      <div id="blog-listing">            
+        <tal:contentitem repeat="item view/blogitems">
+          <div class="blog-item" tal:content="structure item/blog_item_view" />
+        </tal:contentitem>
+        <span class="visualClear"><!-- --></span>         
+      </div>
+     
+      </tal:main-macro>
+    </metal:main>
+  </body>
+</html>

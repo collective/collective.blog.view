@@ -1,0 +1,25 @@
+Metadata-Version: 1.0
+Name: collective.blog.view
+Version: 1.0
+Summary: A blog view for folders.
+Home-page: http://svn.plone.org/svn/collective/collective.blog.view/
+Author: Jarn AS
+Author-email: info@jarn.com
+License: GPL
+Description: Introduction
+        ============
+        
+        This view will display the contents of the objects in a folder and the number of comments, useful for a blog view. Default views for archetypes content is included, and you can easily create custom views for your content, by simply calling it "blog_item_view".
+        
+        Changelog
+        =========
+        
+        1.0dev (unreleased)
+        -------------------
+        
+        - Initial release
+        
+Keywords: plone blog view
+Platform: UNKNOWN
+Classifier: Framework :: Plone
+Classifier: Programming Language :: Python

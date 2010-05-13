@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="collective.blog.view">
+
+  <browser:page
+      for="*"
+      name="blog_view"
+      class=".blog.BlogView"
+      template="blog.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page
+      for="*"
+      name="blog_item_view"
+      class=".blog.DefaultItemView"
+      permission="zope2.View"
+      />
+
+</configure>
