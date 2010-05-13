@@ -7,7 +7,7 @@ class DefaultItemView(BrowserView):
     The default blog item view
     """
     
-    template = ViewPageTemplateFile("blogitem.pt")
+    template = ViewPageTemplateFile("default_item.pt")
     headerstart = '<h1 class="documentFirstHeading">' # Standard plone header
     headerend = '</h1>'
     

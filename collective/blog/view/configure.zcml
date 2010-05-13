@@ -1,6 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
-    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="collective.blog.view">
 
   <browser:page
@@ -14,7 +14,7 @@
   <browser:page
       for="*"
       name="blog_item_view"
-      class=".blog.DefaultItemView"
+      class=".default_item.DefaultItemView"
       permission="zope2.View"
       />
 
