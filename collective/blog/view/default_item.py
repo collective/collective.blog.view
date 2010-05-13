@@ -1,6 +1,5 @@
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
 
 class DefaultItemView(BrowserView):
     """
