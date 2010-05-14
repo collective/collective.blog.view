@@ -17,4 +17,4 @@ msgstr ""
 "Domain: plone\n"
 
 msgid "blog_view"
-msgstr "Bloggvy"
+msgstr "Bloggvisning"

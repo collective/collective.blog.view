@@ -26,7 +26,7 @@ class DefaultItemView(BrowserView):
         
         result = (html[:startpos],
                   '<a href="',
-                  self.context.absolute_url(),
+                  self.context.absolute_url() + '/view',
                   '">',
                   html[startpos:endpos],
                   '</a>',
