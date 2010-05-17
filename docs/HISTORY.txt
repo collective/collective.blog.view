@@ -5,8 +5,11 @@ Changelog
 ----------------
 
 - collective.blog.feeds needed a setting for portal_types, so for consistency
-  collective.blog.view now uses the same setting with the same default.
+  collective.blog.view now uses the same setting with the same default. 
+  [regebro]
 
+- It now shows the amount of comments each entry has, if it has comments
+  enabled. [regebro]
 
 1.0 (2010-05-14)
 ----------------

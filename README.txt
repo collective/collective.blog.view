@@ -45,6 +45,31 @@ collective.blog.view has only two settings. They are both in
   collection will then be considered blog items.
 
 
+Prettyfication
+--------------
+
+collective.blog.view is functional out of the box. But it is not *pretty*.
+Attempts of making it pretty with a standard Plone site is likely to be
+wasted, as most Plone sites tend to have their own content types and their
+own skins. So I'm not going to add extra complexity and potential for confusion
+in this case, since it's likely to not be used anyway.
+
+To make the blog view look great on your site, you will most likely want to
+create custom entry views for your content types. Simply create a view (Zope 3-
+style) for your content type and call it blog_item_view. There you return the
+HTML you want, without HTML and BODY tags, just the HTML snipped you need.
+
+The default views includes the "Send This / Print This" links, and if you are
+logged in also the History of th object. This is because the default view 
+will use the default ATContentTypes views and their "main" macro. For 
+Archetypes Content that are not standard ATContentType, the base_view will
+be used. If you are using standard content types, you might want to make
+custom views for these too. The procedure is the same.
+
+Lastly, to make it prettier, adjust your css for the blog-listing, blog-item and
+comment-link DIVs, so it looks good on your site.
+
+
 What this product do not have
 -----------------------------
 

@@ -53,10 +53,12 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         blog_url = admin.url
         
         # In the folder, create four content types, a Document, a News Item,
-        # a File and an Event:
+        # a File and an Event. Enable comments on the document, and enable
+        # and add on the news-item. Keep the file and event comments disabled.
         admin.getLink(id='document').click()
         admin.getControl(name='title').value = 'A Document Blog Entry'
         admin.getControl(name='text').value = 'The main body of the Document'
+        admin.getControl(name='allowDiscussion:boolean').value = True
         admin.getControl(name='form.button.save').click()
         admin.getLink(id='workflow-transition-publish').click()
         
@@ -67,9 +69,18 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         thefile = admin.getControl(name='image_file')
         thefile.filename = 'testlogo1.jpg'
         thefile.value = open(testfile, 'rb')
+        admin.getControl(name='allowDiscussion:boolean').value = True
         admin.getControl(name='form.button.save').click()
         admin.getLink(id='workflow-transition-publish').click()
-
+        # Add a comment. Annoyingly, this can't be done with the browser,
+        # because of a bug in zope.testbrowser).
+        newsitem = self.portal['a-blog']['a-news-item-blog-entry']
+        discussion = self.portal.portal_discussion.getDiscussionFor(newsitem)
+        discussion.createReply('Subject', 'The comment text')
+        # Verify that is was created:
+        admin.open(admin.url)
+        self.assert_('The comment text' in admin.contents)
+        
         admin.open(blog_url)
         admin.getLink(id='file').click()
         admin.getControl(name='title').value = 'A File Blog Entry'
@@ -110,6 +121,17 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
             'blog_types', ['Document', 'News Item', 'File', 'Event'])
         anon.open(blog_url)
         self.assert_('The main body of the Event' in anon.contents)
+        
+        # There should be one and only one count of '0 Comments' in the text.
+        # It belongs to the document entry.
+        pos = anon.contents.find('0 Comments')
+        self.assert_(pos != -1) # We found one
+        pos = anon.contents.find('0 Comments', pos+1)
+        self.assert_(pos == -1) # But not two
+        
+        # There is also a '1 Comments', which belongs to the News Item:
+        self.assert_('1 Comments' in anon.contents)
+        
         
 
 def test_suite():
