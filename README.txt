@@ -4,7 +4,7 @@ collective.blog.view
 This view will display the contents of the objects in a folder and the number
 of comments, useful for a blog view. Default views for archetypes content is
 included, and you can easily create custom views for your content, by simply
-calling it "blog_item_view".
+calling it ``blog_item_view``.
 
 
 Using collective.blog.view
@@ -13,17 +13,17 @@ Using collective.blog.view
 All you need to use it is to add it to the dependencies of your Plone setup
 in one way or another, and include the zcml.
 
-After this the blog view can be seen by simply adding /blog_view to the end
+After this the blog view can be seen by simply adding ``/blog_view`` to the end
 of a folder or collection.
 
 Although collective.blog.view doesn't need any installation, there is a
-profile included. If you install this view you get "Blog View" as a
+profile included. If you install this view you get `Blog View` as a
 view option for all folders anc collections, easily turning any folder into
 a Blog with a simple click of the button. It will also create the 
-"blog_view_items" property, see below.
+``blog_view_items`` and ``blog_types`` property, see below.
 
 Installing this profile will override any changes you have done to the
-view methods of Folder, Large Plone Folder and Collections. It's generally
+view methods of `Folder`, `Large Plone Folder` and `Collections`. It's generally
 not recommended to install the profile on a heavily customized site, it's
 better to make the changes manually, they are few and simple.
 
@@ -31,10 +31,18 @@ better to make the changes manually, they are few and simple.
 Settings
 --------
 
-collective.blog.view has only one setting. In portal_properties.site_properties
-you can add an integer property called "blog_view_items". This property will
-be used as the number of items to show per page in the blog view. If it does
-not exist, it will default to ten items.
+collective.blog.view has only two settings. They are both in 
+``portal_properties.site_properties``.
+
+* **blog_view_items**: This integer property will be used as the number of
+  items to show per page in the blog view. If it does not exist, it will 
+  default to ten items.
+
+* **blog_types**: This lines property will be used to contain the portal_types
+  that are considered entries in the blog. If it does not exist, it will 
+  default to `Document`, `News Item` and `File`.
+  It's ignored when you use the blog view on a collection, all items in the
+  collection will then be considered blog items.
 
 
 What this product do not have

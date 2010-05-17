@@ -4,7 +4,8 @@ Changelog
 1.1 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- collective.blog.feeds needed a setting for portal_types, so for consistency
+  collective.blog.view now uses the same setting with the same default.
 
 
 1.0 (2010-05-14)
