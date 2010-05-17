@@ -93,6 +93,7 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         # but also the content of the blog entries is listed, also for
         # somebody that is anonymous:
         anon = testbrowser.Browser()
+        anon.handleErrors = False
         anon.open(blog_url)
         # The document:
         self.assert_('The main body of the Document' in anon.contents)
