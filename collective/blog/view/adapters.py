@@ -17,7 +17,7 @@ class FolderEntryGetter:
         portal_properties = getToolByName(self.context, 'portal_properties', None)
         site_properties = getattr(portal_properties, 'site_properties', None)
         portal_types = site_properties.getProperty('blog_types', None)
-        if portal_types == None:
+        if portal_types is None:
             portal_types = ('Document', 'News Item', 'File')
         catalog = getToolByName(self.context, 'portal_catalog')
         path = '/'.join(self.context.getPhysicalPath())
