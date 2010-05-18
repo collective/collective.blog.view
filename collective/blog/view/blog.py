@@ -2,7 +2,12 @@ from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import Batch
 from collective.blog.view.interfaces import IBlogEntryRetriever
-
+try:
+    from plone.app.discussion.interfaces import IConversation
+    USE_PAD = True
+except ImportError:
+    USE_PAD = False
+    
 class BlogView(BrowserView):
     """
     Blog view
@@ -26,8 +31,16 @@ class BlogView(BrowserView):
         return Batch(self.blogitems(), b_size, b_start, orphan=2)
 
     def commentsEnabled(self, ob):
-        return self.portal_discussion.isDiscussionAllowedFor(ob)
+        if USE_PAD:
+            conversation = IConversation(ob)
+            return conversation.enabled()
+        else:
+            return self.portal_discussion.isDiscussionAllowedFor(ob)
         
     def commentCount(self, ob):
-        discussion = self.portal_discussion.getDiscussionFor(ob)
-        return discussion.replyCount(ob)
+        if USE_PAD:
+            conversation = IConversation(ob)
+            return len(conversation)
+        else:
+            discussion = self.portal_discussion.getDiscussionFor(ob)
+            return discussion.replyCount(ob)

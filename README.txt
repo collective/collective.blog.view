@@ -6,6 +6,10 @@ of comments, useful for a blog view. Default views for archetypes content is
 included, and you can easily create custom views for your content, by simply
 calling it ``blog_item_view``.
 
+It's currently developed for Plone 3, but does support plone.app.discussion
+as well as Plone 3's DiscussionTool. Plone 4 will be supported in the near
+future.
+
 
 Using collective.blog.view
 --------------------------

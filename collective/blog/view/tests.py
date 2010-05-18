@@ -55,6 +55,9 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         # In the folder, create four content types, a Document, a News Item,
         # a File and an Event. Enable comments on the document, and enable
         # and add on the news-item. Keep the file and event comments disabled.
+        # (The testing is done during Plone 3's discussion tool, because I
+        # don't want to make plone.app.discussion a dependency. But maybe
+        # it just should be...)
         admin.getLink(id='document').click()
         admin.getControl(name='title').value = 'A Document Blog Entry'
         admin.getControl(name='text').value = 'The main body of the Document'
