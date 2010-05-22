@@ -10,6 +10,11 @@ Changelog
 
 - It now shows the amount of comments each entry has, if it has comments
   enabled. [regebro]
+  
+- The view now accepts year and month parameters (in the url or form) and
+  then restricts the entries to these dates. This means the view now also
+  can work as an archive view. [regebro]
+  
 
 1.0 (2010-05-14)
 ----------------

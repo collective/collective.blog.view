@@ -20,8 +20,10 @@ class BlogView(BrowserView):
         
     def blogitems(self):
         """List all blog items as brains"""
-        # XXX Could perhaps be cached on the object?
-        return IBlogEntryRetriever(self.context).get_entries()
+        # XXX Could perhaps be cached?
+        year = int(self.request.form.get('year',0))
+        month = int(self.request.form.get('month',0))
+        return IBlogEntryRetriever(self.context).get_entries(year=year, month=month)
 
     def batch(self):
         portal_properties = getToolByName(self.context, 'portal_properties')

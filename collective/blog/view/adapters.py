@@ -1,4 +1,6 @@
+import calendar
 from zope import interface, component
+from DateTime import DateTime
 from collective.blog.view.interfaces import IBlogEntryRetriever
 from Products.CMFCore.utils import getToolByName
 from OFS.interfaces import IFolder
@@ -12,21 +14,38 @@ class FolderEntryGetter:
     
     def __init__(self, context):
         self.context = context
-        
-    def get_entries(self):
+    
+    def _base_query(self):
         portal_properties = getToolByName(self.context, 'portal_properties', None)
         site_properties = getattr(portal_properties, 'site_properties', None)
         portal_types = site_properties.getProperty('blog_types', None)
         if portal_types is None:
             portal_types = ('Document', 'News Item', 'File')
-        catalog = getToolByName(self.context, 'portal_catalog')
+
         path = '/'.join(self.context.getPhysicalPath())
-        return catalog.searchResults(path={'query': path, 'depth':1},
-                                     portal_type=portal_types,
-                                     sort_on='effective')
+        
+        return dict(path={'query': path, 'depth':1},
+                    portal_type=portal_types,
+                    sort_on='effective')
+    
+    def get_entries(self, year=None, month=None):
+        catalog = getToolByName(self.context, 'portal_catalog')
+        query = self._base_query()
+        
+        if year:
+            if month:
+                lastday = calendar.monthrange(year, month)[1]
+                startdate = DateTime(year, month, 1, 0, 0)
+                enddate = DateTime(year, month, lastday, 23, 59, 59)
+            else:
+                startdate = DateTime(year, 1, 1, 0, 0)
+                enddate = DateTime(year, 12, 31, 0, 0)
+            query['effective'] = dict(query=(startdate, enddate),
+                                      range='minmax')
+        return catalog.searchResults(**query)
 
     
-class TopicEntryGetter:
+class TopicEntryGetter(FolderEntryGetter):
     """Gets blog entries for collections"""
     
     interface.implements(IBlogEntryRetriever)
@@ -35,5 +54,5 @@ class TopicEntryGetter:
     def __init__(self, context):
         self.context = context
         
-    def get_entries(self):
-        return self.context.queryCatalog()
+    def _base_query(self):
+        return self.context.buildQuery()
