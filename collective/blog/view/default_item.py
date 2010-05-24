@@ -30,6 +30,5 @@ class DefaultItemView(BrowserView):
                   '">',
                   html[startpos:endpos],
                   '</a>',
-                  html[endpos:])        
+                  html[endpos:])
         return ''.join(result)
-    
