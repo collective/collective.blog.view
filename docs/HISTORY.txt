@@ -17,6 +17,8 @@ Changelog
   
 - Added credits to Bergen Offentlige Bibliotek. [regebro]
   
+- Make use of the typesUseViewActionInListings site property. [regebro]
+
 
 1.0 (2010-05-14)
 ----------------

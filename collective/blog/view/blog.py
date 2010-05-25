@@ -46,3 +46,12 @@ class BlogView(BrowserView):
         else:
             discussion = self.portal_discussion.getDiscussionFor(ob)
             return discussion.replyCount(ob)
+        
+    def item_url(self, item):
+        portal_properties = getToolByName(self.context, 'portal_properties')
+        site_properties = getattr(portal_properties, 'site_properties')
+        use_view = site_properties.getProperty('typesUseViewActionInListings')
+        url = item.getURL()
+        if item.portal_type in use_view:
+            return '%s/view' % url
+        return url

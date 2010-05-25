@@ -1,5 +1,6 @@
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.CMFCore.utils import getToolByName
 import re
 
 START_RE = re.compile('<h1[^<>]+documentFirstHeading[^<>]+>') # Standard plone header
@@ -23,10 +24,19 @@ class DefaultItemView(BrowserView):
             return html
         startpos = tag.end()
         endpos = END_RE.search(html, startpos).start()
-        
+
+        portal_properties = getToolByName(self.context, 'portal_properties')
+        site_properties = getattr(portal_properties, 'site_properties')
+        use_view = site_properties.getProperty('typesUseViewActionInListings')
+        if self.context.portal_type in use_view:
+            postfix = '/view'
+        else:
+            postfix = ''
+
         result = (html[:startpos],
                   '<a href="',
-                  self.context.absolute_url() + '/view',
+                  self.context.absolute_url(),
+                  postfix,
                   '">',
                   html[startpos:endpos],
                   '</a>',
