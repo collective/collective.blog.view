@@ -10,8 +10,10 @@ It's currently developed for Plone 3, but does support plone.app.discussion
 as well as Plone 3's DiscussionTool. Plone 4 will be supported in the near
 future.
 
-The development of collective.blog.view was sponsored by 
-Bergen Offentlige Bibliotek, http://bergenbibliotek.no/
+
+Development sponsored by the **Bergen Public Library** -
+http://www.nettbiblioteket.no
+
 
 Using collective.blog.view
 --------------------------
