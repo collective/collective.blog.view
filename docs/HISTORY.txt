@@ -16,11 +16,17 @@ Changelog
   can work as an archive view. [regebro]
   
 - Added credits to Bergen Offentlige Bibliotek. [regebro]
+
+- Plone 4 support. [regebro]
   
 - Make use of the typesUseViewActionInListings site property. [regebro]
+
+This version has been tested with Plone 3.3.4 and Plone 4.0b3.
 
 
 1.0 (2010-05-14)
 ----------------
 
 - Initial release
+
+This version has been tested with Plone 3.3.4.
