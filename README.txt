@@ -11,8 +11,9 @@ as well as Plone 3's DiscussionTool. Plone 4 will be supported in the near
 future.
 
 
-Development sponsored by the **Bergen Public Library** -
-http://www.nettbiblioteket.no
+The development of collective.blog.view was sponsored by the 
+**Bergen Public Library** - http://www.nettbiblioteket.no
+
 
 
 Using collective.blog.view
@@ -25,13 +26,13 @@ After this the blog view can be seen by simply adding ``/blog_view`` to the end
 of a folder or collection.
 
 Although collective.blog.view doesn't need any installation, there is a
-profile included. If you install this view you get `Blog View` as a
-view option for all folders anc collections, easily turning any folder into
-a Blog with a simple click of the button. It will also create the 
-``blog_view_items`` and ``blog_types`` property, see below.
+profile included. If you install this view you get `Blog View` as a view
+option for all folders anc collections, easily turning any folder into a Blog
+with a simple click of the button. It will also create the ``blog_view_items``
+and ``blog_types`` property, see below.
 
-Installing this profile will override any changes you have done to the
-view methods of `Folder`, `Large Plone Folder` and `Collections`. It's generally
+Installing this profile will override any changes you have done to the view
+methods of `Folder`, `Large Plone Folder` and `Collections`. It's generally
 not recommended to install the profile on a heavily customized site, it's
 better to make the changes manually, they are few and simple.
 
@@ -86,5 +87,8 @@ so you need to change the settings through the ZMI. There will also never be
 any per-folder settings, as that would require extending the schema for 
 folders or have a dedicated blog type, both which will defeat the main goal
 of this product: simplicity and flexibility.
+
+A Plone Control Panel may make sense, but will in that case end up in a
+separate product, and installed separately.
 
 This product will never use doctests to test anything besides documentation.
