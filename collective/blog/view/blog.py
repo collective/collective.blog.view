@@ -1,6 +1,6 @@
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import Batch
+from Products.CMFPlone.PloneBatch import Batch
 from collective.blog.view.interfaces import IBlogEntryRetriever
 try:
     from plone.app.discussion.interfaces import IConversation
