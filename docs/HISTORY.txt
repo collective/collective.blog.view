@@ -7,6 +7,9 @@ Changelog
 - import Batch directly from PloneBatch since with Zope 2.13 Batch is not
   available at the package level when collective.blog.view is loaded.
   [vangheem]
+  
+- Reversed sorting in the view.
+  [lregebro]
 
 
 1.1 (2010-06-05)
