@@ -26,7 +26,7 @@ class FolderEntryGetter:
         
         return dict(path={'query': path, 'depth':1},
                     portal_type=portal_types,
-                    sort_on='effective')
+                    sort_on='effective', sort_order='reverse')
     
     def get_entries(self, year=None, month=None):
         catalog = getToolByName(self.context, 'portal_catalog')
