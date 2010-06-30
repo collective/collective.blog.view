@@ -14,8 +14,8 @@ Changelog
   available at the package level when collective.blog.view is loaded.
   [vangheem]
   
-- Reversed sorting in the view.
-  [lregebro]
+- Forced reverse sorting in the view.
+  [regebro]
 
 
 1.1 (2010-06-05)
