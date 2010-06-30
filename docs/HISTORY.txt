@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2 (unreleased)
+1.2 (2010-06-30)
 ----------------
 
 - import Batch directly from PloneBatch since with Zope 2.13 Batch is not
