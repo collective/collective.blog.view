@@ -4,8 +4,9 @@ Changelog
 1.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Fixed XML nesting so blog_type property gets added properly to 
+  site_properties.
+  [jbaldivieso]
 
 1.2 (2010-06-30)
 ----------------
