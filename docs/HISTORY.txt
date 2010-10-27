@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3 (unreleased)
+1.3 (2010-10-27)
 ----------------
 
 - The view_methods attribute is no longer clobbered on install.
