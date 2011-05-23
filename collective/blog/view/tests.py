@@ -34,6 +34,7 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         admin.handleErrors = False
         portal_url = self.portal.absolute_url()
         admin.open(portal_url)
+        admin.getLink('Log in').click()
         admin.getControl(name='__ac_name').value = ptc.portal_owner
         admin.getControl(name='__ac_password').value = ptc.default_password
         admin.getControl('Log in').click()
@@ -123,7 +124,7 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         self.assert_('The main body of the Event' not in anon.contents)
 
         # Add Events to the content type to show in a blog:
-        self.portal.portal_properties.site_properties._setProperty(
+        self.portal.portal_properties.site_properties._updateProperty(
             'blog_types', ['Document', 'News Item', 'File', 'Event'])
         anon.open(self.blog_url)
         self.assert_('The main body of the Event' in anon.contents)
@@ -169,6 +170,8 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         
         # Cut out the navigation to avoid false positives:
         contents = anon.contents[anon.contents.find('<div id="blog-listing">'):]
+        contents = contents[:contents.find('class="portlet portletNavigationTree"')]
+        
         self.assert_('Blog Entry for 2010-01-01 00:00' in contents)
         self.assert_('Blog Entry for 2010-01-03 12:00' in contents)
         self.assert_('Blog Entry for 2010-01-07 12:00' in contents)
@@ -176,6 +179,7 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         
         anon.open(self.blog_url+'?year=2009')
         contents = anon.contents[anon.contents.find('<div id="blog-listing">'):]
+        contents = contents[:contents.find('class="portlet portletNavigationTree"')]
         self.assert_('Blog Entry for 2009-07-09 12:00' in contents)
         self.assert_('Blog Entry for 2010-01-01 00:00' not in contents)
         

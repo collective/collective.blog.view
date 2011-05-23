@@ -24,6 +24,7 @@ setup(name='collective.blog.view',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'Plone',
       ],
       entry_points="""
       # -*- Entry points: -*-

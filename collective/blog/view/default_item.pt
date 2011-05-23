@@ -5,6 +5,7 @@
               view_template python:'%s_view' % portal_type;
               view_macros python:path('here/%s/macros|nothing' % view_template);
               body_macro view_macros/main | base_macros/main | nothing;
+              site_properties context/portal_properties/site_properties;
               content_macro view_macros/content-core | base_macros/content-core | nothing;">
 
   <tal:plone3 tal:condition="python:body_macro is not None">
