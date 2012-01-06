@@ -8,7 +8,7 @@
         
       <div tal:replace="structure provider:plone.abovecontenttitle" />      
       
-      <p class="documentDescription">
+      <p class="documentDescription" tal:condition="python:getattr(here,'widget',None)">
         <metal:field use-macro="python:here.widget('description', mode='view')">
           Description
         </metal:field>

@@ -4,7 +4,9 @@ Changelog
 1.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Added a condition on the description that made it possible to use portal root
+  as a blog folder. Fix by T. Kim Nguyen. 
+  [regebro]
 
 
 1.3 (2010-10-27)
