@@ -68,10 +68,11 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         # don't want to make plone.app.discussion a dependency. But maybe
         # it just should be...)
         admin = self._getAdminBrowser()
-        admin.open(self.portal.absolute_url() + '/@@discussion-settings')
-        admin.getControl(name='form.widgets.globally_enabled:list').value = True
-        admin.getControl(name='form.buttons.save').click()
-        
+        if USE_PAD:
+            admin.open(self.portal.absolute_url() + '/@@discussion-settings')
+            admin.getControl(name='form.widgets.globally_enabled:list').value = True
+            admin.getControl(name='form.buttons.save').click()
+            
         admin.open(self.blog_url)
         admin.getLink(id='document').click()
         admin.getControl(name='title').value = 'A Document Blog Entry'
