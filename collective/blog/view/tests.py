@@ -9,6 +9,13 @@ from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import PloneSite
 ptc.setupPloneSite(extension_profiles=['collective.blog.view:default'])
 
+try:
+    from plone.app.discussion.interfaces import IConversation
+    from zope.component import createObject
+    USE_PAD = True
+except ImportError:
+    USE_PAD = False
+
 import collective.blog.view
 
 class TestCase(ptc.PloneTestCase):
@@ -61,6 +68,10 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         # don't want to make plone.app.discussion a dependency. But maybe
         # it just should be...)
         admin = self._getAdminBrowser()
+        admin.open(self.portal.absolute_url() + '/@@discussion-settings')
+        admin.getControl(name='form.widgets.globally_enabled:list').value = True
+        admin.getControl(name='form.buttons.save').click()
+        
         admin.open(self.blog_url)
         admin.getLink(id='document').click()
         admin.getControl(name='title').value = 'A Document Blog Entry'
@@ -82,8 +93,16 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         # Add a comment. Annoyingly, this can't be done with the browser,
         # because of a bug in zope.testbrowser).
         newsitem = self.portal['a-blog']['a-news-item-blog-entry']
-        discussion = self.portal.portal_discussion.getDiscussionFor(newsitem)
-        discussion.createReply('Subject', 'The comment text')
+        if USE_PAD:
+            comment = createObject('plone.Comment')
+            comment.title = 'Subject'
+            comment.text = 'The comment text'
+            conversation = IConversation(newsitem)
+            conversation.addComment(comment)
+        else:
+            discussion = self.portal.portal_discussion.getDiscussionFor(newsitem)
+            discussion.createReply('Subject', 'The comment text')
+        
         # Verify that is was created:
         admin.open(admin.url)
         self.assert_('The comment text' in admin.contents)
