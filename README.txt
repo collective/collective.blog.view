@@ -6,7 +6,7 @@ of comments, useful for a blog view. Default views for archetypes content is
 included, and you can easily create custom views for your content, by simply
 calling it ``blog_item_view``.
 
-It supports Plone 3 and Plone 4.
+It supports Plone 4. Plone 3 is not officially supported, but should still work.
 
 
 The development of collective.blog.view was sponsored by the 
