@@ -5,6 +5,7 @@ Changelog
 ----------------
 
 - Added support for locales and translation for blog_view template [cekk]
+- default_item view now uses effective view of the object, and not a base view based on portal_type [cekk]
 
 1.4 (2012-01-06)
 ----------------
