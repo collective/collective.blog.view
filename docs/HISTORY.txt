@@ -4,8 +4,7 @@ Changelog
 1.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Added support for locales and translation for blog_view template [cekk]
 
 1.4 (2012-01-06)
 ----------------
