@@ -2,7 +2,7 @@
 <metal:main_macro define-macro="main"
   tal:define="portal_type python:here.getPortalTypeName().lower().replace(' ', '');
               base_macros here/base/macros;
-              view_template python:'%s_view' % portal_type;
+              view_template here/getLayout;
               view_macros python:path('here/%s/macros|nothing' % view_template);
               body_macro view_macros/main | base_macros/main | nothing;
               site_properties context/portal_properties/site_properties;
