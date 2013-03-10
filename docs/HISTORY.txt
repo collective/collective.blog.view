@@ -4,6 +4,10 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- Updated Spanish translation [macagua]
+
+- Added improvements about i18n [macagua]
+
 - Added support for locales and translation for blog_view template [cekk]
 - default_item view now uses effective view of the object, and not a base view based on portal_type [cekk]
 
