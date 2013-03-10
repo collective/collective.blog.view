@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.blog.view\n"
-"POT-Creation-Date: 2013-03-10 01:49+0000\n"
+"POT-Creation-Date: 2013-03-09 18:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,15 +14,10 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.blog.view\n"
 
-#: ./blog.pt:46
-msgid "${comments_count} Comments"
+#: Profile title in configure.zcml
+msgid "Collective Blog View"
 msgstr ""
 
 #: Profile description in configure.zcml
 msgid "Blog view for Plone"
 msgstr ""
-
-#: Profile title in configure.zcml
-msgid "Collective Blog View"
-msgstr ""
-
