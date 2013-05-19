@@ -6,6 +6,8 @@ Changelog
 
 - Nothing changed yet.
 
+This version has been tested with Plone 4.0.10, 4.1.6, 
+Plone 3 is no longer supported, but should still work.
 
 1.4 (2012-01-06)
 ----------------
