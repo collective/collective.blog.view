@@ -9,9 +9,15 @@ Changelog
 - Added improvements about i18n [macagua]
 
 - Added support for locales and translation for blog_view template [cekk]
+
 - default_item view now uses effective view of the object, and not a base view based on portal_type [cekk]
 
-This version has been tested with Plone 4.0.10, 4.1.6, 4.2.5,
+- Added back the base views based on portal_type as backup, as they work. [regebro]
+
+- If the found view macro fails, there is now a fall back to just showing a "View More.." link. [regebro]
+
+This version has been tested with Plone 4.0.10, 4.1.6, 4.2.5, 4.3.
+Plone 3 may still work, but is untested and unsupported.
 
 
 1.4 (2012-01-06)

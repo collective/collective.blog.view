@@ -33,6 +33,7 @@ class DefaultItemView(BrowserView):
         else:
             postfix = ''
 
+        # This wraps the title in a link to the object
         result = (html[:startpos],
                   '<a href="',
                   self.context.absolute_url(),

@@ -4,15 +4,20 @@
               base_macros here/base/macros;
               view_template here/getLayout;
               view_macros python:path('here/%s/macros|nothing' % view_template);
-              body_macro view_macros/main | base_macros/main | nothing;
+              type_view_template python:'%s_view' % portal_type;
+              type_view_macros python:path('here/%s/macros|nothing' % type_view_template);
+              body_macro view_macros/main | base_macros/main | type_view_macros/main | nothing;
               site_properties context/portal_properties/site_properties;
-              content_macro view_macros/content-core | base_macros/content-core | nothing;">
+              content_macro view_macros/content-core | base_macros/content-core | type_view_macros/content-core | nothing;
+              errors python:[];">
 
-  <tal:plone3 tal:condition="python:body_macro is not None">
+  <!-- In Plone 3 we use the "main" macro -->
+  <tal:plone3 condition="python:body_macro is not None" on-error="python: errors.append(True)">
     <metal:use_body use-macro="body_macro" />
   </tal:plone3>
-  
-  <tal:plone4 tal:condition="python:body_macro is None">
+ 
+ <!-- In Plone 4 we instead use the content-core macro -->
+  <tal:plone4 condition="python:body_macro is None" on-error="python: errors.append(True)">
     <div tal:replace="structure provider:plone.abovecontenttitle" />
     <h1 class="documentFirstHeading"><metal:field use-macro="python:here.widget('title', mode='view')" /></h1>
     <div tal:replace="structure provider:plone.belowcontenttitle" />
@@ -21,5 +26,16 @@
     <metal:use_body use-macro="content_macro" />
     <div tal:replace="structure provider:plone.belowcontentbody" />
   </tal:plone4>
+  
+  <!-- If macro display fails, we fall back to only showing a "Read more..." link -->
+  <tal:on-error condition="errors">
+    <div tal:replace="structure provider:plone.abovecontenttitle" />
+    <h1 class="documentFirstHeading"><metal:field use-macro="python:here.widget('title', mode='view')" /></h1>
+    <div tal:replace="structure provider:plone.belowcontenttitle" />
+    <div class="documentDescription"><metal:field use-macro="python:here.widget('description', mode='view')" /></div>
+    <div tal:replace="structure provider:plone.abovecontentbody" />
+    <p><a href="context/absolute_url" i18n:translate="">Read more...</a></p>
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+  </tal:on-error>
 
 </metal:main_macro>
