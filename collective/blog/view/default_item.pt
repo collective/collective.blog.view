@@ -7,7 +7,6 @@
               type_view_template python:'%s_view' % portal_type;
               type_view_macros python:path('here/%s/macros|nothing' % type_view_template);
               body_macro view_macros/main | base_macros/main | type_view_macros/main | nothing;
-              site_properties context/portal_properties/site_properties;
               content_macro view_macros/content-core | base_macros/content-core | type_view_macros/content-core | nothing;
               errors python:[];">
 
