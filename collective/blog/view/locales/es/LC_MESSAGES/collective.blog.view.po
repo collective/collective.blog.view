@@ -31,3 +31,6 @@ msgstr "Agrega una vista extra para blogging en Plone"
 #: Profile title in configure.zcml
 msgid "Collective Blog View"
 msgstr "collective blog.star view - Vistas para Blog"
+
+msgid "Read more..."
+msgstr ""

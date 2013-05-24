@@ -21,3 +21,6 @@ msgstr ""
 #: Profile description in configure.zcml
 msgid "Blog view for Plone"
 msgstr ""
+
+msgid "Read more..."
+msgstr ""

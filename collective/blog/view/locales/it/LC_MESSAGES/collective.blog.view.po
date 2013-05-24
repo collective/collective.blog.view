@@ -26,3 +26,5 @@ msgstr ""
 msgid "Collective Blog View"
 msgstr ""
 
+msgid "Read more..."
+msgstr ""
