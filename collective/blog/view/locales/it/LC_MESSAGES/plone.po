@@ -1,28 +1,27 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# Lennart Regebro <lregebro@jarn.com>, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: collective.blog.view\n"
 "POT-Creation-Date: 2010-02-07 14:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: Lennart Regebro <lregebro@jarn.com>\n"
-"Language-Team: LANGUAGE <all@jarn.com>\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Plone italian translation project <plone-italian-translation-discussion@lists.coactivate.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Plural-Forms: nplurals=2; plural=n!=1\n"
+"Language-Code: it\n"
+"Language-Name: Italiano\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: plone\n"
+"Domain: collective.blog.view\n"
+"X-Is-Fallback-For: it-ch it-it\n"
 
 #. Default: "Blog View"
 #: It is a browser:page called "blog_view" in configure.zcml
 msgid "Blog View"
-msgstr "Blog View"
+msgstr ""
 
 #. Default: "List contents as a blogging view"
 #: It is a browser:page called "blog_view" in configure.zcml
 msgid "List contents as a blogging view"
-msgstr "List contents as a blogging view"
+msgstr ""
 

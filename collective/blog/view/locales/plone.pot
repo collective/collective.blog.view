@@ -17,7 +17,12 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
+#. Default: "Blog View"
 #: It is a browser:page called "blog_view" in configure.zcml
-#. Default: "Blog view"
-msgid "blog_view"
+msgid "Blog View"
+msgstr ""
+
+#. Default: "List contents as a blogging view"
+#: It is a browser:page called "blog_view" in configure.zcml
+msgid "List contents as a blogging view"
 msgstr ""

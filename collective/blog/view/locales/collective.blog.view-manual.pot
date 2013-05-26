@@ -14,13 +14,16 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.blog.view\n"
 
+#. Default: "Collective Blog View"
 #: Profile title in configure.zcml
 msgid "Collective Blog View"
 msgstr ""
 
+#. Default: "Blog view for Plone"
 #: Profile description in configure.zcml
 msgid "Blog view for Plone"
 msgstr ""
 
+#. Default: "Read more..."
 msgid "Read more..."
 msgstr ""
