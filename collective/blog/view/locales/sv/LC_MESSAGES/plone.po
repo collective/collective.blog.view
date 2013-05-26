@@ -25,5 +25,5 @@ msgstr "Bloggvy"
 #. Default: "List contents as a blogging view"
 #: It is a browser:page called "blog_view" in configure.zcml
 msgid "List contents as a blogging view"
-msgstr ""
+msgstr "Visa innehåll i en bloggvy"
 

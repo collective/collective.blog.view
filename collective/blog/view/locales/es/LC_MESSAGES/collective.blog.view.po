@@ -38,3 +38,8 @@ msgstr "blog.star view - Vistas para Blog"
 msgid "Read more..."
 msgstr "Leer más..."
 
+#. Default: "There are no posts in this blog yet."
+#: ./blog.pt:60
+msgid "description_no_blog_entries"
+msgstr ""
+ 

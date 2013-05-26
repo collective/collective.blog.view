@@ -8,12 +8,28 @@
         
       <div tal:replace="structure provider:plone.abovecontenttitle" />      
       
+      <h1 class="documentFirstHeading" tal:condition="python:getattr(here,'widget', None)">
+        <metal:field use-macro="python:here.widget('title', mode='view')">
+          Title
+        </metal:field>
+        <span class="visualClear"><!-- --></span>
+      </h1>
+      
       <p class="documentDescription" tal:condition="python:getattr(here,'widget',None)">
         <metal:field use-macro="python:here.widget('description', mode='view')">
           Description
         </metal:field>
         <span class="visualClear"><!-- --></span>
       </p>
+
+
+      <metal:empty metal:define-slot="no_items_in_listing">
+        <p class="discreet"
+           tal:condition="not: here/objectIds"
+           i18n:translate="description_no_blog_entries">
+            There are no posts in this blog yet.
+        </p>
+      </metal:empty>
       
       <div tal:replace="structure provider:plone.abovecontentbody" />
       

@@ -32,3 +32,8 @@ msgstr ""
 msgid "Read more..."
 msgstr ""
 
+#. Default: "There are no posts in this blog yet."
+#: ./blog.pt:60
+msgid "description_no_blog_entries"
+msgstr "There are no posts in this blog yet."
+ 

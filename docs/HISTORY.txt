@@ -21,6 +21,9 @@ Changelog
 
 - Use standard main_template definitions to get more standard templates 
   macros to work. [regebro]
+  
+- Added the title to the blog view, and also a message if there are no posts
+  in the blog view. [keul, mauritsvanrees, regebro]
 
 This version has been tested with Plone 4.0.10, 4.1.6, 4.2.5, 4.3.
 Plone 3 may still work, but is untested and unsupported.

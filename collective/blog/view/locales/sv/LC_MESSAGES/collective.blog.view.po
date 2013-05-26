@@ -21,14 +21,19 @@ msgstr ""
 #. Default: "Blog view for Plone"
 #: Profile description in configure.zcml
 msgid "Blog view for Plone"
-msgstr ""
+msgstr "Bloggvy för Plone"
 
 #. Default: "Collective Blog View"
 #: Profile title in configure.zcml
 msgid "Collective Blog View"
-msgstr ""
+msgstr "Collective Blog View"
 
 #. Default: "Read more..."
 msgid "Read more..."
-msgstr ""
+msgstr "Läs mer..."
 
+#. Default: "There are no posts in this blog yet."
+#: ./blog.pt:60
+msgid "description_no_blog_entries"
+msgstr "Det finns inga poster i denna bloggen ännu."
+ 
