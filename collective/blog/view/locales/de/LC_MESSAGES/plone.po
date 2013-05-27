@@ -17,10 +17,10 @@ msgstr ""
 "Domain: plone\n"
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
-#. Default: "Blog View"
+#. Default: "Blog view"
 #: It is a browser:page called "blog_view" in configure.zcml
-msgid "Blog View"
-msgstr "Blog Ansicht"
+msgid "Blog view"
+msgstr "Blog ansicht"
 
 #. Default: "List contents as a blogging view"
 #: It is a browser:page called "blog_view" in configure.zcml

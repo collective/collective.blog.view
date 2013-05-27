@@ -15,9 +15,9 @@ msgstr ""
 "Domain: collective.blog.view\n"
 "X-Is-Fallback-For: it-ch it-it\n"
 
-#. Default: "Blog View"
+#. Default: "Blog view"
 #: It is a browser:page called "blog_view" in configure.zcml
-msgid "Blog View"
+msgid "Blog view"
 msgstr ""
 
 #. Default: "List contents as a blogging view"

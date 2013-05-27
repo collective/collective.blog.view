@@ -4,7 +4,7 @@ Changelog
 1.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Changed the "Blog View" to "Blog view", and made sure it worked on collections.
 
 
 1.5 (2013-05-27)

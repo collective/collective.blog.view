@@ -30,7 +30,14 @@
   <browser:menuItem
     for="Products.ATContentTypes.interface.IATFolder"
     menu="plone_displayviews"
-    title="Blog View"
+    title="Blog view"
+    action="@@blog_view"
+    description="List contents as a blogging view" />
+
+  <browser:menuItem
+    for="Products.ATContentTypes.interface.IATTopic"
+    menu="plone_displayviews"
+    title="Blog view"
     action="@@blog_view"
     description="List contents as a blogging view" />
 
