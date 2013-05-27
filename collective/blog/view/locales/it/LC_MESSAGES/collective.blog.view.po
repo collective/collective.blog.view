@@ -21,7 +21,7 @@ msgstr "${comments_count} Commenti"
 #. Default: "Blog view for Plone"
 #: Profile description in configure.zcml
 msgid "Blog view for Plone"
-msgstr ""
+msgstr "Vista Blog per Plone"
 
 #. Default: "Collective Blog View"
 #: Profile title in configure.zcml
@@ -30,9 +30,9 @@ msgstr ""
 
 #. Default: "Read more..."
 msgid "Read more..."
-msgstr ""
+msgstr "Leggi il resto…"
 
 #. Default: "There are no posts in this blog yet."
 #: ./blog.pt:60
 msgid "description_no_blog_entries"
-msgstr ""
+msgstr "Al momento non ci sono articoli in questo blog."
