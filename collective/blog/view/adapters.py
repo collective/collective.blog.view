@@ -1,10 +1,11 @@
-import calendar
-from zope import interface, component
 from DateTime import DateTime
-from collective.blog.view.interfaces import IBlogEntryRetriever
-from Products.CMFCore.utils import getToolByName
 from OFS.interfaces import IFolder
 from Products.ATContentTypes.interface import IATTopic
+from Products.CMFCore.utils import getToolByName
+from collective.blog.view.interfaces import IBlogEntryRetriever
+from zope import interface, component
+
+import calendar
 
 class FolderEntryGetter:
     """Gets blog entries in any sort of folder"""

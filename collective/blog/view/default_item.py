@@ -1,6 +1,6 @@
+from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
 import re
 
 START_RE = re.compile('<h1[^<>]+documentFirstHeading[^<>]+>') # Standard plone header
