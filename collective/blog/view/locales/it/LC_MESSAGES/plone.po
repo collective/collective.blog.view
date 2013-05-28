@@ -17,11 +17,11 @@ msgstr ""
 
 #. Default: "Blog view"
 #: It is a browser:page called "blog_view" in configure.zcml
-msgid "Blog view"
-msgstr ""
+msgid "Blog View"
+msgstr "Vista Blog"
 
 #. Default: "List contents as a blogging view"
 #: It is a browser:page called "blog_view" in configure.zcml
 msgid "List contents as a blogging view"
-msgstr ""
+msgstr "Mostra i contenuto come una vista di blog"
 
