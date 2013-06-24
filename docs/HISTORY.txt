@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - Restored italian translation [keul]
+- added zcml include for plone.app.contentmenu [agitator]
 
 1.5.1 (2013-05-27)
 ------------------
