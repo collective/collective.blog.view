@@ -8,6 +8,8 @@
 
   <five:registerPackage package="."/>
   <i18n:registerTranslations directory="locales" />
+
+  <include package="plone.app.contentmenu" />
   
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
