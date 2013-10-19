@@ -56,7 +56,7 @@ class FunctionalTestCase(ptc.FunctionalTestCase, TestCase):
         # Publish it:
         admin.getLink(id='workflow-transition-publish').click()
         # And set the blog view:
-        admin.getLink('Blog View').click()
+        admin.getLink('Blog view').click()
         # Save this url for easy access later:
         self.blog_url = admin.url
         
