@@ -3,7 +3,7 @@ from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 import re
 
-START_RE = re.compile('<h2[^<>]+documentFirstHeading[^<>]+>') # Standard plone header
+START_RE = re.compile('<h2[^<>]+blogItemHeading[^<>]+>') # Standard plone header
 END_RE = re.compile('</h2>')
 
 class DefaultItemView(BrowserView):

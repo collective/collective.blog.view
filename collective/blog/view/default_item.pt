@@ -28,7 +28,7 @@
  <!-- In Plone 4 we instead use the content-core macro -->
   <tal:plone4 condition="python:body_macro is None" on-error="python: errors.append(True)">
     <div tal:replace="structure provider:plone.abovecontenttitle" />
-    <h2 class="documentFirstHeading"><metal:field use-macro="python:here.widget('title', mode='view')" /></h2>
+    <h2 class="blogItemHeading"><metal:field use-macro="python:here.widget('title', mode='view')" /></h2>
     <div tal:replace="structure provider:plone.belowcontenttitle" />
     <div class="documentDescription"><metal:field use-macro="python:here.widget('description', mode='view')" /></div>
     <div tal:replace="structure provider:plone.abovecontentbody" />
@@ -39,7 +39,7 @@
   <!-- If macro display fails, we fall back to only showing a "Read more..." link -->
   <tal:on-error condition="errors">
     <div tal:replace="structure provider:plone.abovecontenttitle" />
-    <h2 class="documentFirstHeading"><metal:field use-macro="python:here.widget('title', mode='view')" /></h2>
+    <h2 class="blogItemHeading"><metal:field use-macro="python:here.widget('title', mode='view')" /></h2>
     <div tal:replace="structure provider:plone.belowcontenttitle" />
     <div class="documentDescription"><metal:field use-macro="python:here.widget('description', mode='view')" /></div>
     <div tal:replace="structure provider:plone.abovecontentbody" />
