@@ -1,0 +1,3 @@
+<registry>
+    <records interface="collective.blog.view.interfaces.IBlogEntryRetriever" />
+</registry>

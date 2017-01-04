@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<object name="Topic">
- <property name="view_methods" purge="False">
-  <!-- Here the addition of these new views for Topics in portal_types info -->
-  <element value="blog_view"/>
- </property>
-</object>

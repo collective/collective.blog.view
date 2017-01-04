@@ -10,7 +10,7 @@
   <i18n:registerTranslations directory="locales" />
 
   <include package="plone.app.contentmenu" />
-  
+
   <!-- Register the installation GenericSetup extension profile -->
   <genericsetup:registerProfile
     name="default"
@@ -20,7 +20,7 @@
     provides="Products.GenericSetup.interfaces.EXTENSION"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     />
-  
+
   <browser:page
     for="*"
     name="blog_view"
@@ -30,30 +30,31 @@
     />
 
   <browser:menuItem
-    for="Products.ATContentTypes.interface.IATFolder"
+    for="plone.app.contenttypes.content.Folder"
     menu="plone_displayviews"
     title="Blog view"
     action="@@blog_view"
     description="List contents as a blogging view" />
 
   <browser:menuItem
-    for="Products.ATContentTypes.interface.IATTopic"
+    for="plone.app.contenttypes.content.Collection"
     menu="plone_displayviews"
     title="Blog view"
     action="@@blog_view"
     description="List contents as a blogging view" />
 
-  <browser:page
-    for="*"
-    name="blog_item_view"
-    class=".default_item.DefaultItemView"
-    permission="zope2.View"
-    />
-      
+
+  <genericsetup:importStep
+      name="collective.blog.view-postInstall"
+      title="collective.blog.view post_install import step"
+      description="Post install import step from collective.blog.view"
+      handler=".setuphandlers.post_install">
+  </genericsetup:importStep>
+
   <adapter
     factory=".adapters.FolderEntryGetter"
     />
-    
+
   <adapter
     factory=".adapters.TopicEntryGetter"
     />

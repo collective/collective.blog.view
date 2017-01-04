@@ -1,75 +1,64 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      lang="en"
-      metal:use-macro="here/main_template/macros/master"
-      i18n:domain="collective.blog.view">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" metal:use-macro="here/main_template/macros/master" i18n:domain="collective.blog.view">
   <body>
     <metal:main fill-slot="main">
       <tal:main-macro metal:define-macro="main">
-        
-      <div tal:replace="structure provider:plone.abovecontenttitle" />      
-      
-      <h1 class="documentFirstHeading" tal:condition="python:getattr(here,'widget', None)">
-        <metal:field use-macro="python:here.widget('title', mode='view')">
-          Title
-        </metal:field>
-        <span class="visualClear"><!-- --></span>
-      </h1>
-      
-      <p class="documentDescription" tal:condition="python:getattr(here,'widget',None)">
-        <metal:field use-macro="python:here.widget('description', mode='view')">
-          Description
-        </metal:field>
-        <span class="visualClear"><!-- --></span>
-      </p>
 
+        <div tal:replace="structure provider:plone.abovecontenttitle"/>
 
-      <metal:empty metal:define-slot="no_items_in_listing">
-        <p class="discreet"
-           tal:condition="not: here/objectIds"
-           i18n:translate="description_no_blog_entries">
+        <metal:title define-slot="content-title">
+          <h1 tal:content="context/title">Title</h1>
+        </metal:title>
+
+        <metal:description define-slot="content-description">
+          <div tal:content="context/description">Title</div>
+        </metal:description>
+
+        <metal:empty metal:define-slot="no_items_in_listing">
+          <p class="discreet" tal:condition="not: here/objectIds" i18n:translate="description_no_blog_entries">
             There are no posts in this blog yet.
-        </p>
-      </metal:empty>
-      
-      <div tal:replace="structure provider:plone.abovecontentbody" />
-      
-      <div class="sectionImageContainer" tal:condition="here/image_mini|nothing">
-        <a href="#"
-          tal:attributes="href string:$here_url/image/image_view_fullscreen"
-          class="parent-fieldname-image">
-          <img tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt="" />
-        </a>
-        <p class="discreet">
-          <metal:field use-macro="python:here.widget('imageCaption', mode='view')">
-            Image Caption
-          </metal:field>
-        </p>
-      </div>
-      
-      <span class="visualClear"><!-- --></span>         
-      
-      <div id="blog-listing"
-           tal:define="batch view/batch">
-        <div metal:use-macro="here/batch_macros/macros/navigation" />
-      
-        <tal:contentitem repeat="item batch">
-          <div class="blog-item"
-               tal:define="ob item/getObject">
-            <tal:block replace="structure ob/blog_item_view" />
-            <div class="comment-link"
-              tal:condition="python:view.commentsEnabled(ob)">
-              <a i18n:translate="" tal:attributes="href python:view.item_url(item)">
-                <tal:block i18n:name="comments_count" replace="python:view.commentCount(ob)"/> Comments
-              </a><p/>
+          </p>
+        </metal:empty>
+
+        <div tal:replace="structure provider:plone.abovecontentbody"/>
+
+        <div class="sectionImageContainer" tal:condition="here/image_mini|nothing">
+          <a href="#" tal:attributes="href string:$here_url/image/image_view_fullscreen" class="parent-fieldname-image">
+            <img tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt=""/>
+          </a>
+          <p class="discreet">
+            <metal:field use-macro="python:here.widget('imageCaption', mode='view')">
+              Image Caption
+            </metal:field>
+          </p>
+        </div>
+
+        <span class="visualClear">
+          <!-- -->
+        </span>
+
+        <div id="blog-listing" tal:define="batch view/batch">
+          <div metal:use-macro="here/batch_macros/macros/navigation"/>
+
+          <tal:contentitem repeat="item batch">
+            <div class="blog-item" tal:define="ob item/getObject">
+              <h2><div class="title" tal:content="ob/title"></div></h2>
+              <div class="description" tal:content="ob/description"></div>
+              <div class="comment-link" tal:condition="python:view.commentsEnabled(ob)">
+                <a i18n:translate="" tal:attributes="href python:view.item_url(item)">
+                  <tal:block i18n:name="comments_count" replace="python:view.commentCount(ob)"/>
+                  Comments
+                </a><p/>
+              </div>
             </div>
-          </div>
-        </tal:contentitem>
-        
-        <div metal:use-macro="here/batch_macros/macros/navigation" />
-        
-        <span class="visualClear"><!-- --></span>         
-      </div>
-     
+          </tal:contentitem>
+
+          <div metal:use-macro="here/batch_macros/macros/navigation"/>
+
+          <span class="visualClear">
+            <!-- -->
+          </span>
+        </div>
+
       </tal:main-macro>
     </metal:main>
   </body>

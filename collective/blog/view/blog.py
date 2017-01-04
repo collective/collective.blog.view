@@ -1,4 +1,6 @@
-from Products.CMFCore.utils import getToolByName
+# -*- coding: utf-8 -*-
+""" """
+
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five import BrowserView
 from collective.blog.view.interfaces import IBlogEntryRetriever
@@ -7,7 +9,10 @@ try:
     USE_PAD = True
 except ImportError:
     USE_PAD = False
-    
+
+from plone import api
+
+
 class BlogView(BrowserView):
     """
     Blog view
@@ -16,8 +21,10 @@ class BlogView(BrowserView):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        self.portal_discussion = getToolByName(self.context, 'portal_discussion')
-        
+
+        results = api.content.find(context=self.context, portal_type='Discussion Item')
+        self.portal_discussion = [x.getObject() for x in results]
+
     def blogitems(self):
         """List all blog items as brains"""
         # XXX Could perhaps be cached?
@@ -26,9 +33,12 @@ class BlogView(BrowserView):
         return IBlogEntryRetriever(self.context).get_entries(year=year, month=month)
 
     def batch(self):
-        portal_properties = getToolByName(self.context, 'portal_properties')
-        site_properties = getattr(portal_properties, 'site_properties')
-        b_size = site_properties.getProperty('blog_view_items', 10)
+        b_size = api.portal.get_registry_record(
+            'blog_view_items',
+            interface=IBlogEntryRetriever
+        )
+        if not b_size:
+            b_size = 10
         b_start = self.request.form.get('b_start', 0)
         return Batch(self.blogitems(), b_size, b_start, orphan=2)
 
@@ -38,7 +48,7 @@ class BlogView(BrowserView):
             return conversation.enabled()
         else:
             return self.portal_discussion.isDiscussionAllowedFor(ob)
-        
+
     def commentCount(self, ob):
         if USE_PAD:
             conversation = IConversation(ob)
@@ -46,11 +56,15 @@ class BlogView(BrowserView):
         else:
             discussion = self.portal_discussion.getDiscussionFor(ob)
             return discussion.replyCount(ob)
-        
+
     def item_url(self, item):
-        portal_properties = getToolByName(self.context, 'portal_properties')
-        site_properties = getattr(portal_properties, 'site_properties')
-        use_view = site_properties.getProperty('typesUseViewActionInListings')
+        try:
+            use_view = api.portal.get_registry_record(
+                'typesUseViewActionInListings',
+                interface=IBlogEntryRetriever
+            )
+        except:
+            use_view = []
         url = item.getURL()
         if item.portal_type in use_view:
             return '%s/view' % url
