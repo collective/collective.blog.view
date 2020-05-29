@@ -3,16 +3,17 @@ from OFS.interfaces import IFolder
 from plone.app.contenttypes.content import Collection
 from Products.CMFCore.utils import getToolByName
 from collective.blog.view.interfaces import IBlogEntryRetriever
-from zope import interface, component
+from zope.interface import implementer
+from zope.component import adapter
 from plone import api
 
 import calendar
 
+@implementer(IBlogEntryRetriever)
+@adapter(IFolder)
 class FolderEntryGetter:
     """Gets blog entries in any sort of folder"""
 
-    interface.implements(IBlogEntryRetriever)
-    component.adapts(IFolder)
 
     def __init__(self, context):
         self.context = context
@@ -47,11 +48,11 @@ class FolderEntryGetter:
         return catalog.searchResults(**query)
 
 
+@implementer(IBlogEntryRetriever)
+@adapter(Collection)
 class TopicEntryGetter(FolderEntryGetter):
     """Gets blog entries for collections"""
 
-    interface.implements(IBlogEntryRetriever)
-    component.adapts(Collection)
 
     def __init__(self, context):
         self.context = context
